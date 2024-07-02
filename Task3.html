@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Form</title>
+    <script>
+        function showSection(sectionId) {
+            // Your logic to show sections (not provided in the original code)
+        }
+
+        function check() {
+            let age = document.getElementById("age").value;
+            if (age < 18) {
+                alert("Age is not valid");
+                return false; 
+            }
+            return true; 
+        }
+
+        function submitForm(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            let fname = document.getElementById("fname").value;
+            let lname = document.getElementById("lname").value;
+            let age = document.getElementById("age").value;
+            let gender = document.querySelector('input[name="gender"]:checked').value;
+
+            let subject = "Entry Form Data";
+            let body = `The Data You've Entered in the Form is given below:\nFirst Name: ${fname}\nLast Name: ${lname}\nAge: ${age}\nGender: ${gender}`;
+
+            window.location.href = `mailto:pyougank33@jnn.edu.in?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="menu">
+        <ul>
+            <li><a href="https://i.pinimg.com/736x/8b/67/eb/8b67ebeedd93ed73a457c778a421ce67.jpg">Image 1</a></li>
+            <li><a href="https://i.pinimg.com/564x/99/dc/51/99dc5114606274b163f21c2d6b9692ac.jpg">Image 2</a></li>
+            <li><a href="https://i.pinimg.com/736x/ff/f8/82/fff882b6087be1d02e0d68a97e292b9b.jpg">Image 3</a></li>
+        </ul>
+    </div>
+    <form onsubmit="submitForm(event)">
+        <br>
+        First Name<br>
+        <input type="text" id="fname" name="fname" placeholder="Enter your First Name." required><br>
+        Last Name<br>
+        <input type="text" id="lname" name="lname" placeholder="Enter your Last Name." required><br>
+
+        Age<br>
+        <input type="number" id="age" name="age" required placeholder="Enter your Age"><br>
+
+        Gender<br>
+        <input type="radio" value="Male" name="gender" required>Male<br>
+        <input type="radio" value="Female" name="gender" required>Female<br>
+        <input type="radio" value="Other" name="gender" required>Other<br>
+
+        <button type="submit" onclick="return check()">Submit</button>
+    </form>
+</body>
+
+</html>
